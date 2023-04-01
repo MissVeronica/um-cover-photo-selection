@@ -24,6 +24,9 @@ Extension to Ultimate Member for Cover Photo Selection from predefined photos.
 3. Upload the Cover Photos to the "cover-photos" folder.
 4. Select your Photo filenames depending on the Photo contents.
 
+## Updating Cover Photos
+1. If you change by adding or removing any predefined Cover Photos you must make an Update of the dropdown modal at UM Forms to include your updated Photo collection.
+
 ## Test
 1. The Cog Wheel at the Profile Page has an additional Link now: "Cover Photo"
 2. Click on this Link and you should get a Profile Edit Page version of your new Photo Page with your uploaded predefined Cover Photos displayed
