@@ -34,3 +34,7 @@ Extension to Ultimate Member for Cover Photo Selection from predefined photos.
 4. Save the selection and the new Cover Photo will be displayed
 5. Administrators can also select Cover Photo for all Users via the User Profile Cog Wheel 
 6. Pressing X in the dropdown right corner will clear Cover Photo and the old User selection of private Photo will be used.
+
+## Translations or Text changes
+1. Use the "Say What?" plugin with text domain ultimate-member
+2. https://wordpress.org/plugins/say-what/
