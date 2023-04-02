@@ -14,18 +14,19 @@ Extension to Ultimate Member for Cover Photo Selection from predefined photos.
 
 ## UM Settings
 1. UM Settings -> Appearance -> Profile -> "Cover Photo Selection - Photo File extensions"
-2. Enter the Cover Photo extensions comma separated. Examples: jpg,jpeg,png
+2. Enter the Cover Photo extensions comma separated. Examples: jpg,jpeg,png,webp
 3. UM Settings -> Appearance -> Profile -> "Cover Photo Selection - Photo Page Form ID"
 4. Enter the Cover Photos Form ID Number from the UM Forms Page
 
 ## Cover Photos
 1. The plugin created a folder at the activation  .../wp-content/uploads/ultimatemember/cover-photos/
-2. Prepare your predefined Cover Photos to the right size and format for your Forums Cover Photo Field.
-3. Upload the Cover Photos to the "cover-photos" folder.
+2. Prepare your predefined Cover Photos to the right size for your Forums Cover Photo Field.
+3. Upload the Cover Photos to the "cover-photos" folder with your File Manager or FTP Client or use a WordPress file upload plugin.
 4. Select your Photo filenames depending on the Photo contents.
+5. Make an Update of the Dropdown modal at the UM Forms Builder to include your uploaded Cover Photo collection for users to select.
 
 ## Updating Cover Photos
-1. If you change by adding or removing any predefined Cover Photos you must make an Update of the dropdown modal at UM Forms to include your updated Photo collection.
+1. If you change by adding or removing any predefined Cover Photos you must make an Update of the Dropdown modal at the UM Forms Builder to include your updated Photo collection.
 
 ## Test
 1. The Cog Wheel at the Profile Page has an additional Link now: "Cover Photo"
@@ -34,6 +35,7 @@ Extension to Ultimate Member for Cover Photo Selection from predefined photos.
 4. Save the selection and the new Cover Photo will be displayed
 5. Administrators can also select Cover Photo for all Users via the User Profile Cog Wheel 
 6. Pressing X in the dropdown right corner will clear Cover Photo and the old User selection of private Photo will be used.
+7. Users will still have the option of uploading their own Cover Photos.
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
