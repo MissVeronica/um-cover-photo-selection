@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Ultimate Member - Cover Photo Selection
- * Description:     Extension to Ultimate Member for Cover Photo Selection from Site Predefined Photos.
+ * Description:     Extension to Ultimate Member for User Cover Photo Selection from Site Predefined Photos.
  * Version:         1.0.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
