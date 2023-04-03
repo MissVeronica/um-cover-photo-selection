@@ -1,5 +1,5 @@
 # UM Cover Photo Selection
-Extension to Ultimate Member for Cover Photo Selection from predefined photos.
+Extension to Ultimate Member for Cover Photo Selection from Site Predefined Photos.
 
 ## Installation
 1. Download the ZIP file and install as a WP Plugin.
