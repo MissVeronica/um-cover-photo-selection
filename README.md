@@ -6,6 +6,7 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 2. Activate the plugin.
 3. Download and install the "Ultimate Member - Split profile form" plugin from:
 4. https://github.com/ultimatemember/profile-forms
+5. Subnavs by this plugin will be disabled.
 
 ## UM Profile Form
 1. Create a new UM Profile Photo Page for User display and selection of the predefined Cover Photos.
