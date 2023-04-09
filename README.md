@@ -45,3 +45,4 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 ## Updates
 1. Version 1.0.0
 2. Version 2.0.0 Code changes to make the plugin more user friendly for admins.
+3. Version 2.1.0 Code improvements.
