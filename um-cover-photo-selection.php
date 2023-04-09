@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Cover Photo Selection
  * Description:     Extension to Ultimate Member for User Cover Photo Selection from Site Predefined Photos.
- * Version:         2.0.0
+ * Version:         2.1.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -34,7 +34,7 @@ class UM_Cover_Photo_Selection {
 
         add_shortcode( 'cover_photo_selection' ,            array( $this, 'cover_photo_selection_shortcode' ));
 
-        add_action( 'init',                                 array( $this, 'um_init_my_predefined_cover_photo' ), 10 );
+        add_action( 'um_profile_before_header',             array( $this, 'um_init_my_predefined_cover_photo' ), 10 );
         add_filter( 'um_get_default_cover_uri_filter',      array( $this, 'um_get_default_cover_uri_filter_selection' ), 10, 1 );
         add_filter( 'um_user_cover_photo_uri__filter',      array( $this, 'um_get_default_cover_uri_filter_selection' ), 10, 1 );
         add_filter( 'um_myprofile_edit_menu_items',         array( $this, 'um_myprofile_edit_menu_items_photo_selection' ), 10, 1 );
@@ -49,8 +49,6 @@ class UM_Cover_Photo_Selection {
 
         add_filter( "um_{$this->meta_key}_predefined_field_options", array( $this, 'my_cover_photo_predefined_field_options' ), 10, 1 );
         add_filter( "um_get_field__{$this->meta_key}",               array( $this, 'my_cover_photo_get_field_options' ), 10, 1 );
-
-        
 
         $extensions = UM()->options()->get( 'cover_photo_selection_extensions' );
         if ( empty( $extensions )) {
@@ -93,7 +91,7 @@ class UM_Cover_Photo_Selection {
 
             $fields = UM()->query()->get_attr( 'custom_fields', $this->form_id );
 
-            if ( ! empty( $this->selection_list ) && is_array( $this->selection_list )) {                
+            if ( ! empty( $this->selection_list ) && is_array( $this->selection_list )) {
 
                 if ( is_array( $fields[$this->meta_key]['options'] )) {
 
@@ -111,10 +109,17 @@ class UM_Cover_Photo_Selection {
 
             } else {
 
-                $this->message = __( 'No Predefined Cover Photos found', 'ultimate-member' );
+                $dropdown_message = array();
+                $dropdown_message[] = __( 'No Predefined Cover Photos found.', 'ultimate-member' );
+                $dropdown_message[] = __( 'The Plugin will create this list for you', 'ultimate-member' );
+                $dropdown_message[] = __( 'when you have uploaded your Cover Photos.', 'ultimate-member' );
+                $dropdown_message[] = __( 'Target uploads folder: ', 'ultimate-member' );
+                $dropdown_message[] = esc_attr( str_replace( ABSPATH, '...', $this->subdir ));
 
-                $fields[$this->meta_key]['options'] = array( $this->message );
-                UM()->query()->update_attr( 'custom_fields', $this->form_id, $fields );                
+                $fields[$this->meta_key]['options'] = $dropdown_message;
+                UM()->query()->update_attr( 'custom_fields', $this->form_id, $fields );
+
+                $this->message = $dropdown_message[0];
             }
 
         } else {
@@ -131,34 +136,39 @@ class UM_Cover_Photo_Selection {
 
     public function um_init_my_predefined_cover_photo() {
 
-        $this->get_selection_list();
+        if ( isset( $_GET['subnav'] ) && $_GET['subnav'] == 'profileform-' . $this->form_id ) {
+            if ( isset( $_GET['um_action'] ) && $_GET['um_action'] == 'edit' ) {
 
-        if ( ! empty( $this->selection_list ) && is_array( $this->selection_list )) {
+                $this->get_selection_list();
 
-            $html = array();
-            foreach ( $this->selection_list as $basename => $file ) {
+                if ( ! empty( $this->selection_list ) && is_array( $this->selection_list )) {
 
-                $user_query = new WP_User_Query( array( 'meta_key' => esc_attr( $this->meta_key ), 'meta_value' => $file ) );
-                $users_count = (int) $user_query->get_total();
+                    $html = array();
+                    foreach ( $this->selection_list as $basename => $file ) {
 
-                $html[$file] = '
-                        
-                        <div class="um-field-label">
-                            <label title="' . $this->title . '">' . $file . ' - ' . esc_attr( $users_count ) . ' </label>
-                            <div class="um-clear"></div>
-                        </div>
-                        <div class="um-cover has-cover" {data_user_id} ' . $this->data_ratio . '>
-                            <div style="display:block" class="um-cover-e" ' . $this->data_ratio . '>
-                                <img decoding="async" src="' . esc_url( $this->url . $basename ) . '?' . current_time( 'timestamp' ) . '" alt="' . $file . '" title="' . $file . '">
-                            </div>
-                        </div>
-                        <hr class="wp-header-end">
-                    ';
+                        $user_query = new WP_User_Query( array( 'meta_key' => esc_attr( $this->meta_key ), 'meta_value' => $file ) );
+                        $users_count = (int) $user_query->get_total();
+
+                        $html[$file] = '
+                                
+                                <div class="um-field-label">
+                                    <label title="' . $this->title . '">' . $file . ' - ' . esc_attr( $users_count ) . ' </label>
+                                    <div class="um-clear"></div>
+                                </div>
+                                <div class="um-cover has-cover" {data_user_id} ' . $this->data_ratio . '>
+                                    <div style="display:block" class="um-cover-e" ' . $this->data_ratio . '>
+                                        <img decoding="async" src="' . esc_url( $this->url . $basename ) . '?' . current_time( 'timestamp' ) . '" alt="' . $file . '" title="' . $file . '">
+                                    </div>
+                                </div>
+                                <hr class="wp-header-end">
+                            ';
+                    }
+
+                    ksort( $html );
+                    $this->output = implode( '', $html );
+                }
             }
-
-            ksort( $html );
-            $this->output = implode( '', $html );
-        } 
+        }
     }
 
     public function um_get_default_cover_uri_filter_selection( $uri ) {
@@ -191,6 +201,8 @@ class UM_Cover_Photo_Selection {
 
             return __( 'Shortcode Message: ', 'ultimate-member' ) . $this->message;
         }
+
+        return '';
     }
 
     public function um_settings_structure_cover_photo_selection( $settings_structure ) {
@@ -306,7 +318,7 @@ class UM_Cover_Photo_Selection {
     }
 
     public function my_cover_photo_get_field_options( $array ) {
-            
+
         if ( isset( $array['options'] )) {
 
             $this->get_selection_list();
