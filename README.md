@@ -9,10 +9,10 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 5. Subnavs by this plugin will be disabled.
 
 ## UM Profile Form
-1. Create a new UM Profile Photo Page for User display and selection of the predefined Cover Photos.
+1. Create a new UM Profile Photo Page Form for User display and selection of the predefined Cover Photos.
 2. Add a Shortcode field to this new Form with the shortcode [cover_photo_selection]
 3. Add a Dropdown selection field from the UM Form Builder Predefined fields with the name "My Cover Photo"
-4. Selection options for the dropdown field will be created by the shortcode later.
+4. Selection options for the dropdown field will be created by the shortcode later but enter a fake text line to be able to save the field.
 5. Save/Update the new UM Profile Photo Page
 
 ## UM Settings
@@ -26,11 +26,8 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 2. Prepare your predefined Cover Photos to the right size for your Forums Cover Photo Field.
 3. Upload the Cover Photos to the "cover-photos" folder with your File Manager or FTP Client or use a WordPress file upload plugin.
 4. Select your Photo filenames depending on the Photo contents.
-5. Make an Update of the Dropdown modal at the UM Forms Builder to include your uploaded Cover Photo collection for users to select. 
+5. Look at the Dropdown modal at the UM Forms Builder and the uploaded Photos will now exist in the dropdown. 
 6. This Cover Photo filenames update is made the plugin by reading the uploaded Cover Photos files.
-
-## Updating Cover Photos
-1. If you change by adding or removing any predefined Cover Photos you must make an Update of the Dropdown modal at the UM Forms Builder to include your updated Photo collection.
 
 ## Test
 1. The Cog Wheel at the Profile Page has an additional Link now: "Cover Photo"
@@ -47,3 +44,4 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 
 ## Updates
 1. Version 1.0.0
+2. Version 2.0.0 Code changes to make the plugin more user friendly for admins.
