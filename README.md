@@ -13,7 +13,8 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 2. Add a Shortcode field to this new Form with the shortcode [cover_photo_selection]
 3. Add a Dropdown selection field from the UM Form Builder Predefined fields with the name "My Cover Photo"
 4. Selection options for the dropdown field will be created by the shortcode later but enter a fake text line to be able to save the field.
-5. Save/Update the new UM Profile Photo Page
+5. Make the Form Role dependent if required.
+6. Save/Update the new UM Profile Photo Page
 
 ## UM Settings
 1. UM Settings -> Appearance -> Profile -> "Cover Photo Selection - Photo File extensions"
@@ -46,3 +47,4 @@ Extension to Ultimate Member for User Cover Photo Selection from Site Predefined
 1. Version 1.0.0
 2. Version 2.0.0 Code changes to make the plugin more user friendly for admins.
 3. Version 2.1.0 Code improvements.
+4. Version 2.2.0 Added support for Role dependent forms.
